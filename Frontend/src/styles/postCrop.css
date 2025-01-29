@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+.post-main-form {
+    background-image: url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6");
+    background-size: cover;
+    background-position: center;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: rgb(217, 244, 235);
+}
+
+.post-crop-form {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.post-crop-form-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #2d6a4f;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.post-crop-form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.post-crop-form-group {
+    grid-column: span 2;
+}
+
+.post-crop-form-label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.post-crop-form-input,
+.post-crop-form-select,
+.post-crop-form-textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.post-crop-form-input:focus,
+.post-crop-form-select:focus,
+.post-crop-form-textarea:focus {
+    border-color: #2d6a4f;
+}
+
+.post-crop-form-textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.post-crop-form-image-upload-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.post-crop-form-image-preview,
+.post-crop-form-image-placeholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-crop-form-image-placeholder {
+    border: 2px dashed #ccc;
+    color: #aaa;
+}
+
+.post-crop-form-location {
+    grid-column: span 2;
+}
+
+.post-crop-form-submit-button {
+    grid-column: span 2;
+    background: linear-gradient(90deg, #56ab2f, #a8e063);
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.post-crop-form-submit-button:hover {
+    background: linear-gradient(90deg, #a8e063, #56ab2f);
+}
+
+.post-crop-form-submit-button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.back-button img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+}
+
+.back-button img:hover {
+    transform: scale(1.1);
+}

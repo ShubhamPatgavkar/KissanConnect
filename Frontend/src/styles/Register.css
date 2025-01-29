@@ -1,0 +1,91 @@
+/* Scope styles for Register page only */
+.registerPage .formContainer {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4CAF50;
+    /* Green background */
+}
+
+.registerPage{
+    height: 100vh;
+        /* Ensure the page takes full height */
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+}
+.registerPage .formWrapper {
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    background-color: #fff;
+    /* White form section */
+    width: 300px;
+}
+
+.registerPage .logo {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 40px;
+    color: #4CAF50;
+    /* Matching logo color with theme */
+}
+
+.registerPage button {
+    background-color: #4CAF50;
+    /* Green button */
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: max-content;
+    padding: 0.6rem 0.8rem;
+    border-radius: 3px;
+    transform: scale(1);
+    align-self: center;
+}
+
+.registerPage .title {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.registerPage form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.registerPage input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: 2px solid #d8dfe9;
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.registerPage input:focus {
+    outline-color: #4CAF50;
+    /* Green focus outline */
+}
+
+.registerPage p {
+    font-size: 14px;
+}
+
+.registerPage span {
+    color: red;
+    font-size: 14px;
+}
