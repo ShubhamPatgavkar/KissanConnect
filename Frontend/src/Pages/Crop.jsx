@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';  // ✅ Import Link for navigation
 import FarmerCard from '../Components/FarmerCard';
 import '../styles/Crop.css';
+import Navbar from '../Components/Navbar';
+
 function Crop() {
   const [crops, setCrops] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,6 +26,8 @@ function Crop() {
   }, []);
 
   return (
+    <>
+    <Navbar/>
     <div className="crop-container">
       <h1 className="title">Available Crops</h1>
       {loading ? (
@@ -32,16 +37,17 @@ function Crop() {
           {crops.map((crop) => (
             <FarmerCard
               key={crop._id}
+              cropId={crop._id}   // ✅ Pass cropId to FarmerCard
               cropName={crop.cropName}
               farmerName={crop.farmerName}
               location={crop.location}
               price={crop.price}
-              image={crop.image ? `http://localhost:5000/uploads/${crop.image}` : null} // Passing image URL if available
+              image={crop.image ? `http://localhost:5000/uploads/${crop.image}` : null}
             />
           ))}
         </div>
       )}
-    </div>
+    </div></>
   );
 }
 

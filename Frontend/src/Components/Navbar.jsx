@@ -38,14 +38,15 @@ componentDidMount() {
 
     return (
       <header className="bg-green-600 text-white body-font">
-        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <div className="k container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           {/* Logo */}
-          <Link
-            to="/"
-            className="flex title-font font-medium items-center text-white mb-4 md:mb-0"
-          >
-            <span className="ml-3 text-xl">Kissan Connect</span>
-          </Link>
+         <Link
+  to="/"
+  className="flex title-font font-medium items-center text-black mb-4 md:mb-0"
+  style={{ textDecoration: 'none', fontWeight: 'bold' }}
+>
+  <span className="ml-3 text-xl text-black">Kissan Connect</span>
+</Link>
 
           {/* Navigation Links */}
           <nav className="md:ml-auto flex space-x-6 items-center text-base">
@@ -55,8 +56,8 @@ componentDidMount() {
             <Link to="/crops" className="hover:text-green-200">
               Crops
             </Link>
-            <Link to="/about" className="hover:text-green-200">
-              About
+            <Link to="/Analysis" className="hover:text-green-200">
+              Analysis
             </Link>
             <Link to="/postCrop" className="hover:text-green-200">
               Post Crop

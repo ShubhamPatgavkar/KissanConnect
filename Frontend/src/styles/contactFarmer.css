@@ -1,0 +1,145 @@
+/* General Styles */
+.contact-farmer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.contact-farmer-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+.header {
+    text-align: center;
+    font-size: 2rem;
+    /* color: #4CAF50; */
+}
+
+.sub-header {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+/* Form Styles */
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.contact-form input[type="number"],
+.contact-form input[type="date"] {
+    font-size: 1rem;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:disabled {
+    background-color: #ccc;
+}
+
+.contact-form button:hover:not(:disabled) {
+    background-color: #45a049;
+}
+
+/* Error Message */
+.error-message {
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Preview Styles */
+.preview-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.preview-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.preview-container p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.edit-request-btn,
+.contact-farmer-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-request-btn:hover,
+.contact-farmer-btn:hover {
+    background-color: #45a049;
+}
+
+.edit-request-btn {
+    background-color: #ffa500;
+}
+
+.edit-request-btn:hover {
+    background-color: #ff8c00;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .contact-farmer-box {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .header {
+        font-size: 1.5rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+        font-size: 0.9rem;
+    }
+}

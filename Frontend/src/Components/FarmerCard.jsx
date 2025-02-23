@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/FarmerCard.css';
 
-const FarmerCard = ({ cropName, location, price, image,farmerName }) => {
-
-
-  // Fetch farmer's name from localStorage
-
+const FarmerCard = ({ cropId, cropName, location, price, image, farmerName }) => {
   return (
     <div className="farmer-card">
       <h2 className="crop-name">{cropName}</h2>
       <div className="image-placeholder">
-        {/* Display image if available, else show placeholder */}
         {image ? (
           <img src={image} alt={cropName} className="crop-image" />
         ) : (
@@ -22,7 +18,11 @@ const FarmerCard = ({ cropName, location, price, image,farmerName }) => {
         <p><strong>Location:</strong> {location}</p>
         <p><strong>Price:</strong> ₹{price} per quintal</p>
       </div>
-      <button className="contact-button">Contact Farmer</button>
+      
+      {/* ✅ Pass cropId in URL */}
+      <Link to={`/contactFarmer/${cropId}`}>
+        <button className="contact-button">Contact Farmer</button>
+      </Link>
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import { ArrowLeft, Upload, Leaf } from "lucide-react";
+import axios from "axios";
 import { Link } from "react-router-dom";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 import "../styles/postCrop.css";
-import backArrow from "../assets/back.png";
 
 export default function PostCropForm() {
   const [formData, setFormData] = useState({
@@ -14,65 +14,51 @@ export default function PostCropForm() {
     description: "",
     location: "",
     image: null,
-    farmerName: "",  // Add farmerName to the formData state
   });
   const [imagePreview, setImagePreview] = useState(null);
 
-  // Get the logged-in user's name from localStorage
-  const loggedInUser = localStorage.getItem('user');
+  // Retrieve farmer details from localStorage
+  const loggedInUser = localStorage.getItem("user");
   let farmerName = "";
+  let farmerEmail = "";
+
   if (loggedInUser) {
     try {
       const parsedUser = JSON.parse(loggedInUser);
-      farmerName = parsedUser.displayName || ""; // Get the farmer's name
+      farmerName = parsedUser.displayName || "";
+      farmerEmail = parsedUser.email || "";
     } catch (error) {
-      console.error('Error parsing user data:', error);
+      console.error("Error parsing user data:", error);
     }
   }
 
-  // Update formData with the farmer's name
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Add the farmer's name to the formData
     const formDataToSend = new FormData();
-    formDataToSend.append('farmerName', farmerName);  // Add farmerName
-    formDataToSend.append('cropName', formData.cropName);
-    formDataToSend.append('quantity', formData.quantity);
-    formDataToSend.append('quantityType', formData.quantityType);
-    formDataToSend.append('price', formData.price);
-    formDataToSend.append('description', formData.description);
-    formDataToSend.append('location', formData.location);
+    formDataToSend.append("farmerName", farmerName);
+    formDataToSend.append("farmerEmail", farmerEmail);
+    formDataToSend.append("cropName", formData.cropName);
+    formDataToSend.append("quantity", formData.quantity);
+    formDataToSend.append("quantityType", formData.quantityType);
+    formDataToSend.append("price", formData.price);
+    formDataToSend.append("description", formData.description);
+    formDataToSend.append("location", formData.location);
     if (formData.image) {
-      formDataToSend.append('image', formData.image);
+      formDataToSend.append("image", formData.image);
     }
 
-    // Retrieve the token from local storage
-    const token = localStorage.getItem('token');
-
     try {
-      const response = await axios.post('http://localhost:5000/api/crops/post', formDataToSend, {
+      await axios.post("http://localhost:5000/api/crops/post", formDataToSend, {
         headers: {
-          'Content-Type': 'multipart/form-data',
-          'Authorization': `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
 
-      // Show SweetAlert on successful post
-      swal({
-        title: "Success!",
-        text: "Your crop has been posted successfully.",
-        icon: "success",
-        button: "OK",
-      });
-
-      console.log(response.data);
+      swal("Success!", "Your crop has been posted successfully.", "success");
     } catch (error) {
-      if (error.response) {
-        console.error('Error posting crop details:', error.response.data);
-      } else {
-        console.error('Error posting crop details:', error.message);
-      }
+      console.error("Error posting crop details:", error);
     }
   };
 
@@ -94,135 +80,120 @@ export default function PostCropForm() {
   };
 
   return (
-    <div className="post-main-form">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="post-crop-form">
-        <Link to="/" className="back-button">
-          <img src={backArrow} alt="Back" />
-        </Link>
-        <h1 className="post-crop-form-title">Post Your Crop</h1>
-        <form onSubmit={handleSubmit} className="post-crop-form-container">
-          <div className="post-crop-form-group">
-            <label htmlFor="cropName" className="post-crop-form-label">Crop Name</label>
-            <input
-              type="text"
-              id="cropName"
-              name="cropName"
-              value={formData.cropName}
-              onChange={handleInputChange}
-              placeholder="Enter crop name"
-              className="post-crop-form-input"
-              required
-            />
+        {/* Header */}
+        <div className="form-header">
+          <Link to="/" className="back-button">
+            <ArrowLeft className="w-6 h-6 text-white" />
+          </Link>
+          <div className="header-content">
+            <Leaf className="w-8 h-8 text-white" />
+            <h1 className="form-title">Post Your Crop</h1>
           </div>
+        </div>
 
-          <div className="post-crop-form-group">
-            <label htmlFor="quantity" className="post-crop-form-label">Quantity</label>
-            <input
-              type="number"
-              id="quantity"
-              name="quantity"
-              value={formData.quantity}
-              onChange={handleInputChange}
-              placeholder="Enter quantity"
-              className="post-crop-form-input"
-              required
-            />
-          </div>
+        {/* Form */}
+       <form onSubmit={handleSubmit} className="form-content">
+  <div className="input-group">
+    <div className="input-half">
+      <label>Crop Name</label>
+      <input
+        type="text"
+        name="cropName"
+        value={formData.cropName}
+        onChange={handleInputChange}
+        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+        required
+      />
+    </div>
 
-          <div className="post-crop-form-group">
-            <label htmlFor="quantityType" className="post-crop-form-label">Quantity Type</label>
-            <select
-              id="quantityType"
-              name="quantityType"
-              value={formData.quantityType}
-              onChange={handleInputChange}
-              className="post-crop-form-select"
-              required
-            >
-              <option value="">Select quantity type</option>
-              <option value="kg">Kg</option>
-              <option value="quintal">Quintal</option>
-              <option value="ton">Ton</option>
-            </select>
-          </div>
+    <div className="input-half">
+      <label>Location</label>
+      <input
+        type="text"
+        name="location"
+        value={formData.location}
+        onChange={handleInputChange}
+        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+        required
+      />
+    </div>
+  </div>
 
-          <div className="post-crop-form-group">
-            <label htmlFor="price" className="post-crop-form-label">Price (per unit)</label>
-            <input
-              type="number"
-              id="price"
-              name="price"
-              value={formData.price}
-              onChange={handleInputChange}
-              placeholder="Enter price"
-              className="post-crop-form-input"
-              required
-            />
-          </div>
+  <div className="input-group">
+    <div className="input-half">
+      <label>Quantity</label>
+      <input
+        type="number"
+        name="quantity"
+        value={formData.quantity}
+        onChange={handleInputChange}
+        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+        required
+      />
+    </div>
 
-          <div className="post-crop-form-group">
-            <label htmlFor="location" className="post-crop-form-label">Location</label>
-            <input
-              type="text"
-              id="location"
-              name="location"
-              value={formData.location}
-              onChange={handleInputChange}
-              placeholder="Enter your location"
-              className="post-crop-form-input"
-              required
-            />
-          </div>
+    <div className="input-half">
+      <label>Quantity Type</label>
+      <select
+        name="quantityType"
+        value={formData.quantityType}
+        onChange={handleInputChange}
+        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+        required
+      >
+        <option value="">Select type</option>
+        <option value="kg">Kg</option>
+        <option value="quintal">Quintal</option>
+        <option value="ton">Ton</option>
+      </select>
+    </div>
+  </div>
 
-          <div className="post-crop-form-group">
-            <label htmlFor="description" className="post-crop-form-label">Description</label>
-            <textarea
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={handleInputChange}
-              placeholder="Describe your crop"
-              className="post-crop-form-textarea"
-            />
-          </div>
+  <div>
+    <label>Price (₹ per unit)</label>
+    <input
+      type="number"
+      name="price"
+      value={formData.price}
+      onChange={handleInputChange}
+      className="price-input px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+      required
+    />
+  </div>
 
-          <div className="post-crop-form-group">
-            <label htmlFor="image" className="post-crop-form-label">Crop Image</label>
-            <div className="post-crop-form-image-upload-container">
-              {imagePreview ? (
-                <img
-                  src={imagePreview}
-                  alt="Crop preview"
-                  className="post-crop-form-image-preview"
-                />
-              ) : (
-                <div
-                  className="post-crop-form-image-placeholder"
-                  style={{
-                    backgroundImage: `url('/path-to/image.png')`,
-                    backgroundSize: "contain",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                  }}
-                >
-                   Upload Image
-                </div>
-              )}
-              <input
-                type="file"
-                id="image"
-                name="image"
-                accept="image/*"
-                onChange={handleImageUpload}
-                className="post-crop-form-input-file"
-              />
-            </div>
-          </div>
+  <label>Description</label>
+  <textarea
+    name="description"
+    value={formData.description}
+    onChange={handleInputChange}
+    rows={4}
+    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+  />
 
-          <button type="submit" className="post-crop-form-submit-button">
-            Post Crop
-          </button>
-        </form>
+  {/* Image Upload */}
+  <label>Crop Image</label>
+  <div className="image-upload-container">
+    {imagePreview ? (
+      <img src={imagePreview} alt="Preview" className="image-preview" />
+    ) : (
+      <Upload className="upload-icon" />
+    )}
+    <input
+      type="file"
+      name="image"
+      onChange={handleImageUpload}
+      accept="image/*"
+    />
+  </div>
+
+  {/* Submit Button */}
+  <button type="submit" className="submit-button">
+    Post Crop
+  </button>
+</form>
+
       </div>
     </div>
   );

@@ -1,0 +1,78 @@
+
+.chart-container {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+    padding: 20px;
+    width: 80%;
+    margin: auto;
+}
+
+/* Stylish Crop Selector */
+.crop-selector {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 12px 18px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+}
+
+.crop-selector:hover {
+    transform: scale(1.05);
+}
+
+.crop-selector label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* Stylish Dropdown */
+.crop-selector select {
+    padding: 10px 14px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 2px solid #4caf50;
+    border-radius: 8px;
+    cursor: pointer;
+    background: white;
+    color: #333;
+    transition: 0.3s;
+}
+
+.crop-selector select:hover {
+    background: #f0f0f0;
+}
+
+.crop-selector select:focus {
+    outline: none;
+    border-color: #388e3c;
+}
+
+/* Chart Styling */
+.chart {
+    width: 100%;
+    max-width: 700px;
+    height: 420px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+}
+
+.chart:hover {
+    transform: scale(1.02);
+}
+
+.chart canvas {
+    width: 100% !important;
+    height: 100% !important;
+}

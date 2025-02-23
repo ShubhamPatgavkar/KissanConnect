@@ -1,42 +1,224 @@
-body{
-    margin: 0%;
-    padding: 0%;
-    background-color: rgb(217, 244, 235);
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8fdf8;
 }
 
-.cardSection {
- 
+/* Home Container */
+.home-container {
+   background-color: #f0fff4;
+    min-height: 100vh;
 }
 
-/* Ensure consistent width and increased height for the cards */
-.farmer-card {
-    margin: 20px;
-    width: 17rem;
-    /* Fixed width */
-    height: 26rem;
-    /* Increased height */
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    padding: 16px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    font-family: Arial, sans-serif;
-}
-
-.image-placeholder {
-    width: 100%;
-    height: 60%;
-    /* Adjusted height for better proportion */
-    background-color: #f0f0f0;
-    border-radius: 4px;
+/* Hero Section */
+.hero-section {
+    padding: 80px 8%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 16px;
 }
 
-.no-image {
-    color: #aaa;
-    font-size: 0.9rem;
+.hero-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.hero-text {
+    width: 50%;
+    animation: fadeInLeft 1s ease-in-out;
+}
+
+.hero-text h1 {
+    font-size: 50px;
+    font-weight: 700;
+    color: #2d572c;
+    line-height: 1.2;
+}
+
+.highlight {
+    display: block;
+    color: #007200;
+    font-size: 55px;
+}
+
+.hero-text p {
+    font-size: 18px;
+    color: #555;
+    margin: 20px 0;
+}
+
+.cta-button {
+    background: linear-gradient(90deg, #00a000, #008000);
+    color: white;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cta-button:hover {
+    background: #006400;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 128, 0, 0.3);
+}
+
+/* Hero Image */
+.hero-image {
+    width: 45%;
+    animation: fadeInRight 1s ease-in-out;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Features Section */
+.features-section {
+    text-align: center;
+    padding: 100px 8%;
+    background-color: #f0fff4;
+}
+
+.features-section h2 {
+    font-size: 35px;
+    color: #2d572c;
+}
+
+.subtitle {
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+/* Features Grid */
+.features-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.feature-card {
+    text-align: center;
+    width: 30%;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 128, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 128, 0, 0.2);
+}
+
+.feature-icon {
+    background: #d4f4d2;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.feature-icon:hover {
+    transform: rotate(15deg);
+}
+
+.icon {
+    color: #008000;
+    width: 35px;
+    height: 35px;
+}
+
+/* CTA Section */
+.cta-section {
+    background: #007200;
+    text-align: center;
+    padding: 100px 10%;
+    color: white;
+    border-radius: 20px 20px 0 0;
+}
+
+.cta-section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.cta-section .cta-button {
+    background: white;
+    color: #007200;
+    padding: 16px 32px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.cta-section .cta-button:hover {
+    background: #f0fff4;
+    color: #007200;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+/* Get Started Button - Increase Font Size */
+.hero-text .cta-button {
+    font-size: 20px;
+    /* Increased from 16px */
+    padding: 16px 28px;
+    /* Adjusted for better proportions */
+}
+
+/* Centering "Join the Community" Button */
+.cta-section .cta-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    /* Centers the button */
 }

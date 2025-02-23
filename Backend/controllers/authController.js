@@ -55,6 +55,8 @@ const loginUser = async (req, res) => {
         });
     } catch (error) {
         console.error('Error logging in user:', error);
+        console.log("JWT Secret:", process.env.JWT_SECRET);
+
         res.status(500).json({ message: 'Server error', error: error.message });
     }
 };

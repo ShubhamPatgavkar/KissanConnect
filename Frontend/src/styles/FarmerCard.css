@@ -28,17 +28,13 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 16px;
-    overflow: hidden;
-    /* Hide anything that overflows the container */
+    overflow: hidden; /* Hide anything that overflows the container */
 }
 
 .image-placeholder img {
-    width: 100%;
-    /* Make the image fill the width of the container */
-    height: 100%;
-    /* Ensure the image takes the full height */
-    object-fit: cover;
-    /* Cover the entire area, maintaining the aspect ratio */
+    width: 100%; /* Make the image fill the width of the container */
+    height: 100%; /* Ensure the image takes the full height */
+    object-fit: cover; /* Cover the entire area, maintaining the aspect ratio */
 }
 
 .no-image {
